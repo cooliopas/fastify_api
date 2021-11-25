@@ -21,8 +21,8 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "@sinclair/typebox": "^0.20.6",
+    "@sinclair/typebox": "^0.22.1",
     "fastify": "^3.24.0",
-    "typebox_schemas": "ssh://git@github.com:cooliopas/typebox_schemas.git"
+    "typebox_schemas": "ssh://git@github.com:cooliopas/typebox_schemas.git#upgraded"
   }
 }
