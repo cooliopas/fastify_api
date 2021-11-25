@@ -1,4 +1,4 @@
-import Fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+import Fastify, { FastifyInstance, FastifyReply } from 'fastify'
 import { JSENDSuccessSchema } from 'typebox_schemas/lib/schemas/JSENDResponse'
 import { HealthcheckSuccessSchema } from './schemas/HealthcheckResponseSuccess'
 
