@@ -1,5 +1,5 @@
 import Fastify, { FastifyInstance, FastifyReply } from 'fastify'
-import { JSENDSuccessSchema } from 'typebox_schemas/lib/schemas/JSENDResponse'
+import { JSENDSuccessSchema } from 'typebox_schemas/lib/schemas/JSENDSuccess'
 import { HealthcheckSuccessSchema } from './schemas/HealthcheckResponseSuccess'
 
 const fastify: FastifyInstance = Fastify()
