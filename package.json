@@ -1,0 +1,30 @@
+{
+  "name": "fastify_api",
+  "version": "0.0.1",
+  "description": "Fastify API test",
+  "main": "dist/index.js",
+  "author": "Pablo Pasqualino <cooliopas@users.noreply.github.com>",
+  "scripts": {
+    "build": "tsc --build",
+    "build-dev": "tsc",
+    "ts-node": "ts-node --files",
+    "prepare": "tsc --build",
+    "dev": "npm-run-all build-dev && nodemon --exec ts-node --files src/index.ts",
+    "start": "ts-node --files dist/index.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.20.6",
+    "@untemps/jsend-wrapper": "^1.2.0",
+    "fastify": "^3.24.0",
+    "fastify-autoload": "^3.9.0",
+    "typebox_schemas": "ssh://git@github.com:cooliopas/typebox_schemas.git"
+  }
+}
