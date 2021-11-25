@@ -1,35 +1,33 @@
-import { JSendWrapper } from '@untemps/jsend-wrapper'
-import Fastify, { FastifyInstance, FastifyReply } from 'fastify'
-import fastifyAutoload from 'fastify-autoload'
-import path from 'path'
+import Fastify, { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
+import { JSENDSuccessSchema } from 'typebox_schemas/lib/schemas/JSENDResponse'
+import { HealthcheckSuccessSchema } from './schemas/HealthcheckResponseSuccess'
 
-const server: FastifyInstance = Fastify()
+const fastify: FastifyInstance = Fastify()
 
-const jsend = new JSendWrapper()
-server.decorateReply("jsend", function (this: FastifyReply, statusCode: number, body: any, errorCode?: number, errorData?: string) {
-    this.status(statusCode).send(
-        jsend.wrap(statusCode, body, errorCode, errorData)
-    );
-});
-
-// routes
-server.register(fastifyAutoload, {
-    dir: path.join(__dirname, 'routes'),
-    autoHooks: true,
-    cascadeHooks: true,
-    dirNameRoutePrefix: function rewrite(folderParent, folderName) {
-        if (folderName === 'protected') {
-            return false
-        }
-        return folderName
+fastify.route({
+    method: 'GET',
+    url: '/healthcheck',
+    schema: {
+        response: {
+            200: JSENDSuccessSchema(HealthcheckSuccessSchema),
+        },
+    },
+    handler: async (_, reply: FastifyReply) => {
+        return reply
+            .code(200)
+            .send({
+                status: 'success',
+                data: {
+                    timestamp: new Date().toISOString()
+                }
+            })
     }
 })
 
 const start = async () => {
     try {
-        await server.listen(3000, '0.0.0.0')
+        await fastify.listen(3000)
     } catch (err) {
-        server.log.error(err)
         process.exit(1)
     }
 }

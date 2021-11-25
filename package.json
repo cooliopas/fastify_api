@@ -22,9 +22,7 @@
   },
   "dependencies": {
     "@sinclair/typebox": "^0.20.6",
-    "@untemps/jsend-wrapper": "^1.2.0",
     "fastify": "^3.24.0",
-    "fastify-autoload": "^3.9.0",
     "typebox_schemas": "ssh://git@github.com:cooliopas/typebox_schemas.git"
   }
 }
